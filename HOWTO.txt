@@ -1,0 +1,40 @@
+Yuotube Boost HOWTO
+
+Short version, four steps.
+
+1. INSTALL RUST
+   Windows / Linux / macOS: https://rustup.rs  then reopen the terminal and check:
+       rustc --version
+
+2. FILL data.txt
+   Put ONE YouTube link in the file. A watch link, a short link or a bare video id all work:
+       https://www.youtube.com/watch?v=VIDEOID
+       https://youtu.be/VIDEOID
+       VIDEOID
+   Blank lines and lines starting with # are ignored. Only the first link is used.
+
+3. BUILD
+       cargo build --release
+
+4. RUN
+       Windows :  target\release\yuotube-boost.exe
+       Linux   :  ./target/release/yuotube-boost
+
+FIRST RUN
+   The bot asks for an access key. Paste the key you were given and press Enter.
+   After that the bot signs in, clears the security check and shows the service list.
+
+PROXY
+   proxy.txt holds one proxy per line, in this form:
+       http://user:pass@host:port
+   Leave the file empty to connect directly. A proxy is used only when the site
+   refuses the direct connection.
+
+CONFIG
+   config.json holds the pause between cycles:
+       {"settings": {"sleep_seconds": 3600}}
+   The value is in seconds. The bot always repeats the same service and the same
+   target, so no input is needed after the first cycle.
+
+STOP
+   Press Ctrl+C. The bot prints one line and exits with code 0.
